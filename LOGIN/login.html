@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Register</title>
+    <link rel="stylesheet" href="login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Inclusion de jQuery -->
+</head>
+<body>
+    <div class="container">
+        <!-- Formulaire de connexion -->
+        <form id="loginForm">
+            <h1>Login</h1>
+            <div class="inputbox">
+                <input type="text" placeholder="Username" id="username">
+                <span class='bx bxs-user'></span>
+            </div>
+            <div class="inputbox">
+                <input type="password" placeholder="Password" id="password">
+                <span class='bx bxs-lock-alt'></span>
+            </div>
+
+            <div class="remember-forgot">
+                <label><input type="checkbox">Remember me</label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="register-link">
+                <p>Don't have an account? <a href="#" id="showRegisterForm">Register</a></p>
+            </div>
+        </form>
+
+        <!-- for register  (caché par défaut) -->
+        <form id="registerForm" style="display:none;">
+            <h1>Register</h1>
+            <div class="inputbox">
+                <input type="text" placeholder="Full Name" id="name">
+                <span class='bx bxs-user'></span>
+            </div>
+            <div class="inputbox">
+                <input type="email" placeholder="Email" id="email">
+                <span class='bx bxs-envelope'></span>
+            </div>
+            <div class="inputbox">
+                <input type="number" placeholder="Age" id="age">
+                <span class='bx bxs-calendar'></span>
+            </div>
+            <div class="inputbox">
+                <select id="gender">
+                    <option value="" disabled selected>Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Register</button>
+            <div class="register-link">
+                <p>Already have an account? <a href="#" id="showLoginForm">Login</a></p>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+
+    <script src="login.js"></script> 
+</body>
+</html>
