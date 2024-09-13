@@ -1,21 +1,20 @@
 
-$(document).ready(function() {
 
     $('#showLoginForm').on('click', function(event) {
-        event.preventDefault();
-        $('#loginForm').show();
-        $('#registerForm').hide();
+        event.preventDefault(); // stp relode auto
+        $('#loginForm').show(); // affiché 
+        $('#registerForm').hide(); // n'est pas affiché 
     });
 
     $('#showRegisterForm').on('click', function(event) {
-        event.preventDefault();
-        $('#loginForm').hide();
-        $('#registerForm').show();
+        event.preventDefault();   // stp relode auto
+        $('#loginForm').hide(); // n'est pas affiché 
+        $('#registerForm').show(); // affiché 
     });
 
     $('#loginForm').on('submit', function(event) {
-        event.preventDefault();
-
+        event.preventDefault();  // // stop relode auto 
+////// condition for next page 
         var username = $('#username').val();
         var password = $('#password').val();
 
@@ -30,7 +29,7 @@ $(document).ready(function() {
 
 
     $('#registerForm').on('submit', function(event) {
-        event.preventDefault();
+        event.preventDefault(); 
 
         const name = $('#name').val();
         const email = $('#email').val();
@@ -39,31 +38,26 @@ $(document).ready(function() {
         const password = $('#passwordRegister').val(); 
 
         if (!name || !email || !age || !gender || !password) {
-            alert("Please fill out all the fields.");
+            alert("please fill out all the fields.");
         } else if (!isValidEmail(email)) {
-            alert("Please enter a valid email.");
+            alert("please enter a valid email.");
         } else if (!isValidAge(age)) {
-            alert("Please enter a valid age between 0 and 100.");
+            alert("please enter a valid age between 0 and 100.");
         } else if (!isValidPassword(password)) {
-            alert("Password must be at least 8 characters long.");
+            alert("password must be at least 8 characters long.");
         } else {
-            alert("Registration successful! Name: " + name + ", Email: " + email + ", Age: " + age + ", Gender: " + gender);
+            alert("registration successful! Name: " + name + ", Email: " + email + ", Age: " + age + ", Gender: " + gender);
             $('#registerForm')[0].reset(); 
             $('#registerForm').hide();
             $('#loginForm').show(); 
         }
     });
 
-    function isValidEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
-    }
-
+/// condition valid Age 
     function isValidAge(age) {
         return age >= 0 && age <= 100;
     }
-
+/// condition valid password 
     function isValidPassword(password) {
         return password.length >= 8;
     }
-});

@@ -1,4 +1,5 @@
-/* General Styles */
+/*  margin : the space around an element's border  */
+/* padding :  the space between its content and its border */
 body {
     font-family: Arial, sans-serif;
     background-color: #ede5b9;
@@ -16,12 +17,12 @@ body {
 
 form {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;  /* flex-wrap: wrap; Permet aux éléments de se déplacer sur plusieurs lignes si nécessaire. */
     margin-bottom: 20px;
-    gap: 10px;
+    gap: 10px; /* espace entre les element */
 }
 
-input[type="text"] {
+input[type="text"] {  /*style el input text */
     padding: 12px;
     flex: 1;
     border: 1px solid #ccc;
@@ -39,26 +40,19 @@ button {
     color: #fff;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;  /* transaction douce  */
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-
-
-
-
 #con1 {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    display: grid; /* mech najem naaml dividion lel window  */
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* kol div yekhou 500px mech naaml division ala 2 colonne   */
     gap: 20px;
     padding: 10px;
 }
-
-
-
 
 .infoimg {
     background-color: #fdd8ad;
@@ -67,7 +61,7 @@ button:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 15px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /*   mech namml shadow wtransaction lel div elii feha taswira    */
 }
 
 .infoimg:hover {
@@ -82,6 +76,8 @@ button:hover {
     margin-bottom: 10px;
 }
 
+
+/* style name artist / name pic / desc  */
 .nameart {
     font-size: 18px;
     color: #333;
@@ -105,24 +101,65 @@ button:hover {
     border-radius: 6px;
 }
 
-.price {
-    font-size: 18px;
-    color: #28a745;
-    font-weight: bold;
-    margin-top: 5px;
+
+
+/* ChatBot Styles */
+.chat {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-#form-section {
-    display: none;
-    margin-top: 20px;
+.bubbleleft {
+    --r: 1em;
+    --t: 1.5em;
+    
+    max-width: 300px;
+    padding: 1em;
+    border-inline: var(--t) solid #0000;
+    border-radius: calc(var(--r) + var(--t)) / var(--r);
+    mask: 
+        radial-gradient(100% 100% at var(--_p) 0, #0000 99%, #000 102%) 
+        var(--_p) 100% / var(--t) var(--t) no-repeat,
+        linear-gradient(#000 0 0) padding-box;
+    background: linear-gradient(135deg, #FE6D00, #1384C5) border-box;
+    color: #fff;
+    --_p: 0;
+    border-bottom-left-radius: 0 0;
+    place-self: start;
 }
 
-#form-section input {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
+.bubbleright {
+    --r: 1em;
+    --t: 1.5em;
+    
+    max-width: 300px;
+    padding: 1em;
+    border-inline: var(--t) solid #0000;
+    border-radius: calc(var(--r) + var(--t)) / var(--r);
+    mask: 
+        radial-gradient(100% 100% at var(--_p) 0, #0000 99%, #000 102%) 
+        var(--_p) 100% / var(--t) var(--t) no-repeat,
+        linear-gradient(#000 0 0) padding-box;
+    background: linear-gradient(135deg, #FE6D00, #1384C5) border-box;
+    color: #fff;
+    --_p: 100%;
+    border-bottom-right-radius: 0 0;
+    place-self: end;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    gap: 20px;
+    font-family: system-ui, sans-serif;
+    font-size: 20px;
 }

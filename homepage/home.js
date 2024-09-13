@@ -1,3 +1,5 @@
+
+ /// for id image 
 function generateID() {
   var count = 0;
   return function () {
@@ -6,14 +8,14 @@ function generateID() {
 }
 var id = generateID();
 
-// Function for iterating over arrays
+//  each
 function each(array, func) {
   for (var i = 0; i < array.length; i++) {
     func(array[i], i);
   }
 }
 
-// Function for filtering
+// filter for remove and display 
 function filter(array, predicate) {
   var acc = [];
   each(array, function (element, i) {
@@ -23,6 +25,8 @@ function filter(array, predicate) {
   });
   return acc;
 }
+
+//// for ajouter une image 
 
 function picture(image, name, artist, description) {
   return {
@@ -35,6 +39,8 @@ function picture(image, name, artist, description) {
   };
 }
 
+//  creat class 
+
 function MakePicture() {
   var obj = {}
   obj.list = []
@@ -45,6 +51,9 @@ function MakePicture() {
   return obj;
 }
   
+
+/// methode for class 
+// add pour ajouter image / remove for delete / sort mech nadham tsawre bel date d'ajoute / display pour la func search
 var  addpicture= function (image, name, artist, description, ) {
     this.list.push(picture(image, name, artist, description, ));
   };
@@ -68,6 +77,8 @@ var displaybyArtist = function (artist) {
   };
 
 
+
+  /// add images 
 
 var obj = MakePicture();
 obj.addpicture("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Van-willem-vincent-gogh-die-kartoffelesser-03850.jpg/800px-Van-willem-vincent-gogh-die-kartoffelesser-03850.jpg",
@@ -102,6 +113,12 @@ obj.addpicture("https://cdn.britannica.com/75/115475-050-9F9B00CE/Self-portrait-
           
 
 
+
+
+          /// button add for user pour add a img // sort by 
+          // prepend for add in the first  / add for add in the last elament 
+
+
 $("body").append("<button id='showBut'>Add</button>");
 $(".container").prepend("<button id='Sort'>Sort by Date</button>");
 
@@ -112,6 +129,8 @@ $("#showBut").on('click', function () {
   show = !show; 
   $('#inputs').toggle(show); 
 });
+
+//  func  for display / ajouter / search img 
 
 function displayone(obj) {
   $('#con1').append(`
@@ -151,12 +170,12 @@ function search() {
   $('#con1').empty();
   displayAll(filtered);
 }
-
+//search
 $("#search").on("click", function (event) {
   event.preventDefault();
   search();
 });
-
+// sort 
 $("#Sort").on("click", function () {
   var sortedList = obj.sortByDate();
   $('#con1').empty();
@@ -165,7 +184,45 @@ $("#Sort").on("click", function () {
 
 
 
+/// chatbot  interface 
+function createChatInterface() {
+  $('#send-btn').on('click', function() {
+      const userMessage = $('#user-input').val().trim();
+      if (userMessage) {
+          $('<div/>', {
+              'class': 'bubbleleft',
+              'text': userMessage
+          }).appendTo('#chat-messages');
 
+          $('<div/>', {
+              'class': 'bubbleright',
+              'text': 'I am a chatbot. How can I assist you?'
+          }).appendTo('#chat-messages');
+
+          $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
+
+          $('#user-input').val('');
+      }
+  });
+}
+
+createChatInterface();
+
+
+
+
+$('#chat').on('click', function() {
+  $('#chatbox').toggle(); // click hide click show 
+});
+
+$('#adminbutton').on('click', function() {
+  $('#adminpanel').toggle();
+});
+
+
+
+
+/// condition panal admin 
 $("#adminbutton").on('click', function () {
   var code = prompt("Enter admin code:");
   if (code === "0000") {
@@ -175,6 +232,10 @@ $("#adminbutton").on('click', function () {
   }
 });
 
+
+
+
+/// admin add img
 $("#addimage").on('click', function () {
   var image = $("#addimageurl").val();
   var name = $("#addimagename").val();
@@ -185,6 +246,8 @@ $("#addimage").on('click', function () {
   $("#adminpanel").hide(); 
 });
 
+
+// remove img with name 
 $("#removeimage").on('click', function () {
   var name = $("#removeimagename").val();
   obj.list = obj.list.filter(function (picture) {
@@ -194,6 +257,9 @@ $("#removeimage").on('click', function () {
   $("#adminpanel").hide(); 
 });
 
+
+
+/// ipdate imge 
 $("#updateimage").on('click', function () {
   var name = $("#updateimagename").val();
   var newImage = $("#updateimageurl").val();
