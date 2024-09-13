@@ -1,7 +1,8 @@
-/* General Styles */
+/*  margin : the space around an element's border  */
+/* padding :  the space between its content and its border */
 body {
     font-family: Arial, sans-serif;
-    background-color: #5D7052;
+    background-color: #ede5b9;
     margin: 0;
     padding: 0;
     color: #333;
@@ -12,17 +13,16 @@ body {
     margin: 20px auto;
     padding: 20px;
     border-radius: 12px;
-
 }
 
 form {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;  /* flex-wrap: wrap; Permet aux éléments de se déplacer sur plusieurs lignes si nécessaire. */
     margin-bottom: 20px;
-    gap: 10px;
+    gap: 10px; /* espace entre les element */
 }
 
-input[type="text"] {
+input[type="text"] {  /*style el input text */
     padding: 12px;
     flex: 1;
     border: 1px solid #ccc;
@@ -34,13 +34,13 @@ input[type="text"] {
 
 button {
     padding: 12px 20px;
-    background-color: #007BFF;
+    background-color: #6a4000;
     border: none;
     border-radius: 6px;
     color: #fff;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;  /* transaction douce  */
 }
 
 button:hover {
@@ -48,8 +48,8 @@ button:hover {
 }
 
 #con1 {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    display: grid; /* mech najem naaml dividion lel window  */
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* kol div yekhou 500px mech naaml division ala 2 colonne   */
     gap: 20px;
     padding: 10px;
 }
@@ -61,65 +61,105 @@ button:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 15px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /*   mech namml shadow wtransaction lel div elii feha taswira    */
 }
 
 .infoimg:hover {
     transform: scale(1.02);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
 .infoimg img {
-    max-width: 100%;
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
     border-radius: 6px;
-    height: auto;
     margin-bottom: 10px;
 }
 
+
+/* style name artist / name pic / desc  */
 .nameart {
-    font-size: 1.2em;
+    font-size: 18px;
     color: #333;
     margin: 5px 0;
 }
 
 .namepic {
-    font-size: 1.4em;
+    font-size: 22px;
     font-weight: bold;
-    color: #007BFF;
+    color: #0e7964;
     margin: 5px 0;
 }
 
 .desc {
-    font-size: 0.9em;
-    color: #666;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
     margin: 10px 0;
-}
-
-.price {
-    font-size: 1.2em;
-    color: #28a745;
-    font-weight: bold;
-    margin-top: 5px;
-}
-
-/* Inputs Section */
-#inputs {
-    display: none;
-    margin-top: 20px;
-}
-
-#inputs input {
-    display: block;
-    width: calc(100%); 
-    padding: 12px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+    text-align: justify;
+    padding: 10px;
     border-radius: 6px;
-    font-size: 16px;
 }
 
-/* Buttons Section */
-button {
-    margin: 10px 0;
-    font-size: 16px;
+
+
+/* ChatBot Styles */
+.chat {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bubbleleft {
+    --r: 1em;
+    --t: 1.5em;
+    
+    max-width: 300px;
+    padding: 1em;
+    border-inline: var(--t) solid #0000;
+    border-radius: calc(var(--r) + var(--t)) / var(--r);
+    mask: 
+        radial-gradient(100% 100% at var(--_p) 0, #0000 99%, #000 102%) 
+        var(--_p) 100% / var(--t) var(--t) no-repeat,
+        linear-gradient(#000 0 0) padding-box;
+    background: linear-gradient(135deg, #FE6D00, #1384C5) border-box;
+    color: #fff;
+    --_p: 0;
+    border-bottom-left-radius: 0 0;
+    place-self: start;
+}
+
+.bubbleright {
+    --r: 1em;
+    --t: 1.5em;
+    
+    max-width: 300px;
+    padding: 1em;
+    border-inline: var(--t) solid #0000;
+    border-radius: calc(var(--r) + var(--t)) / var(--r);
+    mask: 
+        radial-gradient(100% 100% at var(--_p) 0, #0000 99%, #000 102%) 
+        var(--_p) 100% / var(--t) var(--t) no-repeat,
+        linear-gradient(#000 0 0) padding-box;
+    background: linear-gradient(135deg, #FE6D00, #1384C5) border-box;
+    color: #fff;
+    --_p: 100%;
+    border-bottom-right-radius: 0 0;
+    place-self: end;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    gap: 20px;
+    font-family: system-ui, sans-serif;
+    font-size: 20px;
 }
