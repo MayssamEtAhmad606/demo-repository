@@ -24,58 +24,83 @@ function filter(array, predicate) {
   return acc;
 }
 
-function picture(image, name, artist, description, century) {
+function picture(image, name, artist, description) {
   return {
     image: image,
     name: name,
     artist: artist,
     description: description,
-    century: century,
     id: id(),
-    date: new Date()
+    date:  Date()
   };
 }
 
 function MakePicture() {
-  var obj = {};
-  obj.list = [];
+  var obj = {}
+  obj.list = []
+  obj.addpicture = addpicture
+  obj.removepicture = removepicture
+  obj.sortByDate = sortByDate
+  obj.displaybyArtist = displaybyArtist
+  return obj;
+}
   
-  obj.addpicture = function (image, name, artist, description, century) {
-    this.list.push(picture(image, name, artist, description, century));
+var  addpicture= function (image, name, artist, description, ) {
+    this.list.push(picture(image, name, artist, description, ));
   };
   
-  obj.removepicture = function (id) {
+var removepicture = function (id) {
     this.list = this.list.filter(function (element) {
       return element.id !== id;
     });
   };
   
-  obj.sortByDate = function () {
+var sortByDate = function () {
     return this.list.sort(function (a, b) {
       return a.date.getTime() - b.date.getTime();
     });
   };
   
-  obj.displaybyArtist = function (artist) {
+var displaybyArtist = function (artist) {
     return filter(this.list, function (element) {
       return element.artist === artist;
     });
   };
 
-  return obj;
-}
+
 
 var obj = MakePicture();
-
+obj.addpicture("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Van-willem-vincent-gogh-die-kartoffelesser-03850.jpg/800px-Van-willem-vincent-gogh-die-kartoffelesser-03850.jpg",
+   "The Potato Eaters", " Vincent van Gogh", " shows five peasants eating potatoes around a simple table. The painting uses dark tones to depict the harsh, humble lives of rural workers, emphasizing their dignity despite poverty.");
+   
+      obj.addpicture("https://upload.wikimedia.org/wikipedia/en/0/07/Matisse-Luxe.jpg",
+       "Luxe, Calme et Volupté", "  Henri Matisse", " shows five peasants eating potatoes around a simple table. The painting uses dark tones to depict the harsh, humble lives of rural workers, emphasizing their dignity despite poverty.");
+    
+    
+   
 obj.addpicture("https://cdn.britannica.com/24/189624-050-F3C5BAA9/Mona-Lisa-oil-wood-panel-Leonardo-da.jpg?w=1000",
-  "Mona Lisa", "Leonardo da Vinci", "The Mona Lisa, painted by Leonardo da Vinci, is a renowned portrait featuring a woman with a mysterious smile. Created in the early 16th century, it's famous for its sophisticated technique and is displayed in the Louvre Museum.", "Fifteenth");
-obj.addpicture("https://cdn.britannica.com/75/115475-050-9F9B00CE/Self-portrait-drawing-Leonardo-da-Vinci-Royal-Library.jpg", "Self-Portrait",
-  "Leonardo da Vinci", "A self-portrait is an artwork created by an artist of themselves, reflecting their appearance and often their personality or emotions.", "Seventeenth");
-obj.addpicture("https://example.com/image3.jpg", "Picture 3", "Artist 3", "Description 3", "Eighteenth");
-obj.addpicture("https://example.com/image4.jpg", "Picture 4", "Artist 4", "Description 4", "Nineteenth");
-obj.addpicture("https://example.com/image5.jpg", "Picture 5", "Artist 5", "Description 5", "Twentieth");
+  "Mona Lisa", "Leonardo da Vinci", "The Mona Lisa, painted by Leonardo da Vinci, is a renowned portrait featuring a woman with a mysterious smile. Created in the early 16th century, it's famous for its sophisticated technique and is displayed in the Louvre Museum.");
+  
+  obj.addpicture("./img/Van_Gogh_-_Starry_Night_-.jpg", 
+  "Starry Night", "Vincent van Gogh", " Shows a vibrant night sky swirling over a tranquil village. Painted from his asylum room, it’s known for its bold colors and emotional intensity.");
 
-console.log(obj);
+obj.addpicture("https://cdn.britannica.com/75/115475-050-9F9B00CE/Self-portrait-drawing-Leonardo-da-Vinci-Royal-Library.jpg", "Self-Portrait",
+  "Leonardo da Vinci", "The Persistence of Memory by Salvador Dalí depicts melting clocks in a surreal, dreamlike landscape, symbolizing the fluidity of time.");
+
+
+
+  obj.addpicture("https://www.henrimatisse.org/assets/img/paintings/the-dessert-harmony-in-red.jpg", "Henri Matisse",
+    " The Dessert ", "woman setting a table in a red room filled with intricate patterns. The bright, bold colors and simplified forms are characteristic of Matisse’s Fauvist style, emphasizing harmony and decorative beauty over realism.");
+  
+  
+    obj.addpicture("./img/Salvador-Dali-Persistence-of-Memory.webp", "Persistence of Memory",
+        "Salvador Dali ", "A self-portrait is an artwork created by an artist of themselves, reflecting their appearance and often their personality or emotions.");
+      
+     obj.addpicture("./img/Salvador-Dali-Museum-St.-Petersburg-Florida.jpg", "PetersburgF lorida",
+          "Salvador Dali ", "The Salvador Dalí Museum in St. Petersburg, Florida, showcases the largest collection of Dalí's art outside Spain in a unique, futuristic building.");
+        
+          
+
 
 $("body").append("<button id='showBut'>Add</button>");
 $(".container").prepend("<button id='Sort'>Sort by Date</button>");
@@ -84,8 +109,8 @@ $('#inputs').hide();
 
 var show = false;
 $("#showBut").on('click', function () {
-  show = !show;
-  $('#inputs').toggle(show);
+  show = !show; 
+  $('#inputs').toggle(show); 
 });
 
 function displayone(obj) {
@@ -99,20 +124,21 @@ function displayone(obj) {
 }
 
 function displayAll(array) {
-  $('#con1').empty();
+  $('#con1').empty()
   each(array, function (element) {
-    displayone(element);
+    displayone(element)
   });
 }
 
-displayAll(obj.list);
+displayAll(obj.list)
 
 $("#btnn").on("click", function () {
-  var image = $("#ipn1").val();
-  var name = $("#ipn2").val();
-  var artist = $("#ipn3").val();
-  var description = $("#ipn4").val();
-  var century = $("#ipn6").val();
+  var image = $("#ipn1").val()
+  var name = $("#ipn2").val()
+  var artist = $("#ipn3").val()
+  var description = $("#ipn4").val()
+  var century = $("#ipn6").val()
+
 
   obj.addpicture(image, name, artist, description, century);
   $('#con1').empty();
@@ -135,4 +161,52 @@ $("#Sort").on("click", function () {
   var sortedList = obj.sortByDate();
   $('#con1').empty();
   displayAll(sortedList);
+});
+
+
+
+
+$("#adminbutton").on('click', function () {
+  var code = prompt("Enter admin code:");
+  if (code === "0000") {
+      $("#adminpanel").show();
+  } else {
+      alert("Invalid code.");
+  }
+});
+
+$("#addimage").on('click', function () {
+  var image = $("#addimageurl").val();
+  var name = $("#addimagename").val();
+  var artist = $("#addimageartist").val();
+  var description = $("#addimagedescription").val();
+  obj.addpicture(image, name, artist, description);
+  displayAll(obj.list);
+  $("#adminpanel").hide(); 
+});
+
+$("#removeimage").on('click', function () {
+  var name = $("#removeimagename").val();
+  obj.list = obj.list.filter(function (picture) {
+      return picture.name !== name;
+  });
+  displayAll(obj.list);
+  $("#adminpanel").hide(); 
+});
+
+$("#updateimage").on('click', function () {
+  var name = $("#updateimagename").val();
+  var newImage = $("#updateimageurl").val();
+  var newArtist = $("#updateimageartist").val();
+  var newDesc = $("#updateimagedescription").val();
+
+  each(obj.list, function (picture) {
+      if (picture.name === name) {
+          picture.image = newImage;
+          picture.artist = newArtist;
+          picture.description = newDesc;
+      }
+  });
+  displayAll(obj.list);
+  $("#adminpanel").hide(); 
 });

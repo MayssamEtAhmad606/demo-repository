@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #5D7052;
+    background-color: #ede5b9;
     margin: 0;
     padding: 0;
     color: #333;
@@ -12,7 +12,6 @@ body {
     margin: 20px auto;
     padding: 20px;
     border-radius: 12px;
-
 }
 
 form {
@@ -34,7 +33,7 @@ input[type="text"] {
 
 button {
     padding: 12px 20px;
-    background-color: #007BFF;
+    background-color: #6a4000;
     border: none;
     border-radius: 6px;
     color: #fff;
@@ -47,12 +46,19 @@ button:hover {
     background-color: #0056b3;
 }
 
+
+
+
+
 #con1 {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     gap: 20px;
     padding: 10px;
 }
+
+
+
 
 .infoimg {
     background-color: #fdd8ad;
@@ -66,60 +72,57 @@ button:hover {
 
 .infoimg:hover {
     transform: scale(1.02);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
 .infoimg img {
-    max-width: 100%;
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
     border-radius: 6px;
-    height: auto;
     margin-bottom: 10px;
 }
 
 .nameart {
-    font-size: 1.2em;
+    font-size: 18px;
     color: #333;
     margin: 5px 0;
 }
 
 .namepic {
-    font-size: 1.4em;
+    font-size: 22px;
     font-weight: bold;
-    color: #007BFF;
+    color: #0e7964;
     margin: 5px 0;
 }
 
 .desc {
-    font-size: 0.9em;
-    color: #666;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
     margin: 10px 0;
+    text-align: justify;
+    padding: 10px;
+    border-radius: 6px;
 }
 
 .price {
-    font-size: 1.2em;
+    font-size: 18px;
     color: #28a745;
     font-weight: bold;
     margin-top: 5px;
 }
 
-/* Inputs Section */
-#inputs {
+#form-section {
     display: none;
     margin-top: 20px;
 }
 
-#inputs input {
+#form-section input {
     display: block;
-    width: calc(100%); 
+    width: 100%;
     padding: 12px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 16px;
-}
-
-/* Buttons Section */
-button {
-    margin: 10px 0;
     font-size: 16px;
 }
